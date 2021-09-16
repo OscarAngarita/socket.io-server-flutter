@@ -16,4 +16,13 @@ io.on('connection', client => { //El client es un dispositivo/computadora conect
 
     });
 
+    client.on('emitir-mensaje', (payload) => {
+
+        console.log(payload);
+        // io.emit('nuevo-mensaje', payload); //Emite a todos
+        
+        client.broadcast.emit('nuevo-mensaje', payload); //Emite a todos menos el cliente que lo está emitiendo
+
+    });
+
 });
